@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Store</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff); 
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2); 
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #00796b; 
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease;
+}
+header p {
+    font-size: 1.2rem;
+    color: #004d40; 
+    opacity: 0.9;
+    letter-spacing: 1px;
+    animation: fadeInUp 1s ease;
+}
+main {
+    flex: 1;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.product-card {
+    background: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+.product-card .card-content {
+    padding: 1.5rem;
+}
+.product-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    letter-spacing: 1px;
+}
+.product-card p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+.product-card button {
+    background: linear-gradient(135deg, #00bcd4, #0097a7); 
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.product-card button:hover {
+    background: linear-gradient(135deg, #0097a7, #00bcd4);
+    transform: scale(1.05);
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close:hover {
+    color: white;
+}
+.qris-image {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+.whatsapp-button {
+    background: linear-gradient(135deg, #009688, #004d40); 
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: inline-block;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.whatsapp-button:hover {
+    background: linear-gradient(135deg, #004d40, #009688);
+    transform: scale(1.05);
+}
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2); 
+    color: #004d40; 
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Koko Shop</h1>
+        <p>Kami Menyediakan Berbagai Macam Kebutuhan Bot!</p>
+    </header>
+
+    <main>
+        <div class="product-card" data-name="Produk A" data-price="100000">
+            <img src="https://files.catbox.moe/u63z2s.jpg" alt="Product Image">
+            <div class="card-content">
+                <h3>Produk 1</h3>
+                <p>Harga: Rp 100.000</p>
+                <button class="buyButton">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-name="Produk B" data-price="200000">
+            <img src="https://files.catbox.moe/u63z2s.jpg" alt="Product Image">
+            <div class="card-content">
+                <h3>Produk 2</h3>
+                <p>Harga: Rp 200.000</p>
+                <button class="buyButton">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-name="Produk C" data-price="150000">
+            <img src="https://files.catbox.moe/u63z2s.jpg" alt="Product Image">
+            <div class="card-content">
+                <h3>Produk 3</h3>
+                <p>Harga: Rp 150.000</p>
+                <button class="buyButton">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-name="Produk D" data-price="300000">
+            <img src="https://files.catbox.moe/u63z2s.jpg" alt="Product Image">
+            <div class="card-content">
+                <h3>Produk 4</h3>
+                <p>Harga: Rp 300.000</p>
+                <button class="buyButton">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-name="Produk E" data-price="250000">
+            <img src="https://files.catbox.moe/u63z2s.jpg" alt="Product Image">
+            <div class="card-content">
+                <h3>Produk 5</h3>
+                <p>Harga: Rp 250.000</p>
+                <button class="buyButton">Beli Sekarang</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <p>Produk: <span id="selectedProductName"></span></p>
+            <p>Total Harga: Rp <span id="totalPrice"></span></p>
+            <p>Silakan scan kode QRIS di bawah ini untuk melakukan pembayaran:</p>
+            <img src="https://files.catbox.moe/91mclu.jpg" alt="QRIS Payment" class="qris-image">
+            <p>Pastikan jumlah yang dibayarkan sesuai dengan total harga.</p>
+            <a id="whatsappLink" href="#" target="_blank" class="whatsapp-button">
+                Konfirmasi Pembelian via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; (Name Shop)</p>
+    </footer>
+
+    <script>
+        const paymentModal = document.getElementById('paymentModal');
+        const closeModal = document.querySelectorAll('.close');
+        const selectedProductNameElement = document.getElementById('selectedProductName');
+        const totalPriceElement = document.getElementById('totalPrice');
+        const whatsappLink = document.getElementById('whatsappLink');
+
+        let selectedProductName = "";
+        let selectedPrice = 0;
+
+        document.querySelectorAll('.buyButton').forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.product-card');
+                selectedProductName = productCard.getAttribute('data-name');
+                selectedPrice = productCard.getAttribute('data-price');
+
+                selectedProductNameElement.textContent = selectedProductName;
+                totalPriceElement.textContent = selectedPrice;
+
+                const message = `Halo, saya ingin membeli:\n\n- ${selectedProductName} seharga Rp ${selectedPrice}\n\nTotal: Rp ${selectedPrice}`;
+                const encodedMessage = encodeURIComponent(message);
+                whatsappLink.href = `https://wa.me/6281291984823?text=${encodedMessage}`;
+
+                paymentModal.style.display = 'block';
+            });
+        });
+
+        closeModal.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                paymentModal.style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === paymentModal) {
+                paymentModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
